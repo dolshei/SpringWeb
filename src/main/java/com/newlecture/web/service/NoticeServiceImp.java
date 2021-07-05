@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.newlecture.web.dao.NoticeDao;
 import com.newlecture.web.entity.Notice;
+import com.newlecture.web.entity.NoticeView;
 
 
 @Service
@@ -16,9 +17,9 @@ public class NoticeServiceImp implements NoticeService {
 	private NoticeDao noticeDao;
 
 	@Override
-	public List<Notice> getList() {
+	public List<NoticeView> getList() {
 
-		List<Notice> list = noticeDao.getList();
+		List<NoticeView> list = noticeDao.getList();
 		return list;
 	}
 

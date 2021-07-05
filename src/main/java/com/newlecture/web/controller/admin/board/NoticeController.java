@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.newlecture.web.entity.Notice;
+import com.newlecture.web.entity.NoticeView;
 import com.newlecture.web.service.NoticeService;
 
 @Controller("adminNoticeController")
@@ -19,7 +20,7 @@ public class NoticeController {
 	@RequestMapping("list")
 	public String list() {
 
-		List<Notice> list = service.getList();
+		List<NoticeView> list = service.getList();
 
 		return "admin.board.notice.list";
 	}
