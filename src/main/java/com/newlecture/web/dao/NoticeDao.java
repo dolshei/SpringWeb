@@ -11,8 +11,7 @@ import com.newlecture.web.entity.NoticeView;
 @Mapper
 public interface NoticeDao {
 
-	@Select("select * from noticeview")
-	List<NoticeView> getList();
+	List<NoticeView> getList(int offset, int size, String field, String query);
 
 	Notice get(int id);
 
