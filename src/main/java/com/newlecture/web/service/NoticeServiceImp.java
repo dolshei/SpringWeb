@@ -16,61 +16,58 @@ public class NoticeServiceImp implements NoticeService {
 	@Autowired
 	private NoticeDao noticeDao;
 
-//	@Override
-//	public List<NoticeView> getViewList() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
-	
-
+	//페이지를 요청할 때
 	@Override
-	public int getCount() {
+	public List<NoticeView> getViewList() {
 		// TODO Auto-generated method stub
-		return 0;
+		return getViewList(1, "title", "");
 	}
 
+	//검색을 요청할 때
 	@Override
 	public List<NoticeView> getViewList(String field, String query) {
 		// TODO Auto-generated method stub
-		return null;
+		return getViewList(1, field, query);
 	}
 	
+	//페이지를 요청할 때
 	@Override
 	public List<NoticeView> getViewList(int page, String field, String query) {
 		
 		int size = 10;
 		int offset = 0+(page-1)*size;
 
-		List<NoticeView> list = noticeDao.getList(offset, size, field, query);
+		List<NoticeView> list = noticeDao.getViewList(offset, size, field, query, false);
 		return list;
 	}
-
-
-//	@Override
-//	public List<NoticeView> getViewList(int page, String field, String query) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return getCount("title", "");
+	}
 
 	@Override
 	public int getCount(String field, String query) {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.getCount(field, query);
 	}
 
+	//일괄 공개를 요청할 때
 	@Override
 	public int updatePubAll(int[] pubIds, int[] closeIds) {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.updatePubAll(pubIds, closeIds);
 	}
 
+	//일괄 삭제를 요청할 때
 	@Override
 	public int deleteAll(int[] ids) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return noticeDao.deleteAll(ids);
 	}
 	
+	//자세한 페이지 요청할 때
 	@Override
 	public NoticeView getView(int id) {
 
@@ -82,32 +79,34 @@ public class NoticeServiceImp implements NoticeService {
 	@Override
 	public Notice getNext(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDao.getNext(id);
 	}
 
 	@Override
 	public Notice getPrev(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return noticeDao.getPrev(id);
 	}
 
+	//수정 페이지를 요청할 때
 	@Override
 	public int update(Notice notice) {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.update(notice);
 	}
 
 	@Override
 	public int delete(int id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.delete(id);
 	}
 
 	@Override
 	public int insert(Notice notice) {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDao.insert(notice);
 	}
+
 
 
 }
